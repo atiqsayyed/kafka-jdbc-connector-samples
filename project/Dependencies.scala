@@ -6,7 +6,7 @@ object Dependencies {
 
   private val Logback             = "ch.qos.logback"                  % "logback-classic"       % "1.2.1"
   private val ScalaLogging        = "com.typesafe.scala-logging"     %% "scala-logging"         % "3.5.0"
-  private val KafkaJdbcConnector  = "com.agoda"                      %% "kafka-jdbc-connector"  % "1.2.0"
+  private val KafkaJdbcConnector  = "com.agoda"                      %% "kafka-jdbc-connector"  % "1.2.0-SNAPSHOT"
   private val AkkaActor           = "com.typesafe.akka"              %% "akka-actor"            % "2.4.17"
   private val KafkaConnectRuntime = "org.apache.kafka"                % "connect-runtime"       % KafkaV
   private val KafkaConnectJson    = "org.apache.kafka"                % "connect-json"          % KafkaV
@@ -16,17 +16,17 @@ object Dependencies {
   private val ScalaJHttp          = "org.scalaj"                     %% "scalaj-http"           % "2.3.0"      % "test"
   private val MysqlDriver         = "mysql"                           % "mysql-connector-java"  % "6.0.6"
   private val MssqlDriver         = "com.microsoft.sqlserver"         % "mssql-jdbc"            % "6.1.0.jre8"
-
+  private val PostgresqlDriver    = "org.postgresql"                  % "postgresql"            % "42.1.4"
   object Compile {
     def kafkaConnect = Seq(
       Logback, ScalaLogging, KafkaJdbcConnector, AkkaActor, KafkaConnectRuntime,
-      KafkaConnectJson, MysqlDriver, MssqlDriver
+      KafkaConnectJson, MysqlDriver, MssqlDriver, PostgresqlDriver
     )
   }
 
   object Test {
     def functional = Seq(
-      Scalatics, ScalaTest, MysqlDriver, MssqlDriver, ScalaJHttp, ReactiveKafka
+      Scalatics, ScalaTest, MysqlDriver, MssqlDriver, ScalaJHttp, ReactiveKafka, PostgresqlDriver
     )
   }
 }

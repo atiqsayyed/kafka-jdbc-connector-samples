@@ -31,6 +31,15 @@ services:
     environment:
       MYSQL_DATABASE: tempdb
       MYSQL_ROOT_PASSWORD: Passw0rd
+
+  postgresql:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: tempdb
+      POSTGRES_PASSWORD: example
+
   connect:
     image: com.agoda/kafka-connect:latest
     ports:
@@ -39,5 +48,6 @@ services:
       - kafka:kafka
       - mssql:mssql
       - mysql:mysql
+      - postgresql:postgresql
     environment:
       CONFIG_FILE: functional-test.conf
